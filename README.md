@@ -19,10 +19,12 @@ Repo is divided into 3 subfolders:
     Every *env* variable used in the initial setup of the containers are placed in the ***.env*** file, such as grafana initial username and password, influxDB admin credentials, etc. **You need to edit this file** to set the credentials/configurations that you prefer.
 
     In order to give an abstract explanation about how the components that I chose for my RMM system work and communicate to each other, I've realized this conceptual schema.
- 
     
+    <p align="center">
+    <img align="center" style="width:50%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/docker-components.png">
+    </p>
 
-
+    <br><br>
 
     ***More details about the subfolder contents are explained in a deeper way into its relative [README](./miner-RMM/README.md)***.
 <br>
