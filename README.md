@@ -16,7 +16,7 @@ Repo is divided into ***3 subfolders***:
 <img align="top" style="width:4vw" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/influxdb.png"> &nbsp; <img align="center" style="width:4vw" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/mosquitto.png"> 
     
     It contains the **core part** of this project, including all the docker containers and their relative configuration files.\
-    Every *env* variable used in the initial setup of the containers are placed in the ***.env*** file, such as grafana initial username and password, influxDB admin credentials, etc. <ins>You need</ins> to edit [this file](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/.env) to set the credentials/configurations that you prefer.\
+    Every *env* variable used in the initial setup of the containers are placed in the ***.env*** file, such as Grafana initial username and password, InfluxDB admin credentials, etc. <ins>You need</ins> to edit the [.env](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/.env) file to setup the credentials/configurations that you prefer.\
     In order to give a general explanation about the behaviour of the services wrapped into [docker-compose.yml](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/docker-compose.yml) and the interaction between each other, have a look at the schema below.
     <p align="left">
     <img align="center" style="width:75%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/docker-components.png">
