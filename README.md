@@ -1,5 +1,7 @@
 # Bitcoin Mining Custom RMM (Remote Monitoring and Management)
+<p align="center">
 <img align="center" src="https://media.tenor.com/_mpI-aHxu6gAAAAC/bitcoin-bitcoin-coaster.gif" width="250"> 
+</p>
 
 ## Introduction
 
