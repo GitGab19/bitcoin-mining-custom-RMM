@@ -60,5 +60,5 @@ Repo is divided into 3 subfolders:
 <br>
 
 ## **System Design**
-In order to clarify in a better way how the RMM system is built, you can have a look at the system design that I've chosen to define. 
+In order to clarify in a better way how the RMM system is built, you can have a look at the system design that I've chosen to define.  
 <img src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/system-design.png">
