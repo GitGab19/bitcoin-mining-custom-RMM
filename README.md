@@ -9,12 +9,10 @@ Repo contains a personal implementation of a custom ***Remote Monitoring and Man
 
 Repo is divided into 3 subfolders:
 
-- ***miner-RMM/*** 
-<img align="center" style="margin:10px; width:40px" src="../bitcoin-mining-custom-RMM/docs/images/docker.webp">
-<img align="center" style="margin:10px; width:50px" src="../bitcoin-mining-custom-RMM/docs/images/grafana.png">
-<img align="center" style="margin:10px; width:50px" src="../bitcoin-mining-custom-RMM/docs/images/telegraf.png">
-<img align="center" style="margin:10px; width:50px" src="../bitcoin-mining-custom-RMM/docs/images/influxdb.png">
-<img align="center" style="margin:10px; width:50px" src="../bitcoin-mining-custom-RMM/docs/images/mosquitto.png">
+- ***miner-RMM/*** &nbsp; <img align="center" style="width:50px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/docker.webp"> &nbsp;
+<img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/grafana.png"> &nbsp;
+<img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/telegraf.png"> &nbsp;
+<img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/influxdb.png"> &nbsp; <img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/mosquitto.png">
 
     It contains the **core part** of the project, including all the docker containers and their relative configuration files.
 
@@ -27,9 +25,9 @@ Repo is divided into 3 subfolders:
 
 
     ***More details about the subfolder contents are explained in a deeper way into its relative [README](./miner-RMM/README.md)***.
-
+<br>
     
-- ***sensors/*** <img align="center" style="margin:10px; width:70px" src="../bitcoin-mining-custom-RMM/docs/images/esp32.jpg">
+- ***sensors/*** &nbsp; <img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/esp32.jpg">
   
     It contains *sensors_management.ino*: this is the file that needs to be **flashed** into the <a href="https://www.espressif.com/en/products/socs/esp32">ESP32</a> in order to let it communicating sensors measurements by **MQTT** messages to the MQTT broker (*mosquitto*) that will be installed into Raspberry PI. <br>
     Before flashing it, you need to change some lines of code, such as:
@@ -43,8 +41,9 @@ Repo is divided into 3 subfolders:
     Other specif settings can be customized directly into code, in which there are already comments to better understand it. <br><br>
     In order to flash the ESP32 with this code, you can do it using the Arduino IDE (https://www.arduino.cc/en/software) following <a href="https://medium.com/@pauljoegeorge/setup-arduino-ide-to-flash-a-project-to-esp32-34db014a7e65">this guide</a>.<br><br>
     ***More details about the subfolder contents are explained in a deeper way into its relative [README](./ESP32/README.md)***.
+<br>
 
-- ***tasmota_custom_firmware/*** <img align="center" style="margin:10px; width:70px" src="../bitcoin-mining-custom-RMM/docs/images/tasmota.png">
+- ***tasmota_custom_firmware/*** &nbsp; <img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tasmota.png">
   
     It contains my custom <a href="https://tasmota.github.io/docs/">Tasmota</a> firmware files, customized by me in order to add the Telegram functionality to the original firmware version. This customization, once firmware is **flashed** into the <a href="https://sonoff.tech/product-document/diy-smart-switches-doc/powr2-doc/">Sonoff</a>, permits to link a personal Telegram bot to the smart switch, and power on/off the miner connected to it, **remotely**.
 
@@ -62,4 +61,4 @@ Repo is divided into 3 subfolders:
 
 ## **System Design**
 In order to clarify in a better way how the RMM system is built, you can have a look at the system design that I've chosen to define. 
-<img style="margin-top:-5vw" src="../bitcoin-mining-custom-RMM/docs/images/system-design.png">
+<img src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/system-design.png">
