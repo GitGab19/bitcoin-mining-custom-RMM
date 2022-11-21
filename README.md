@@ -55,7 +55,7 @@ Repo is divided into 3 subfolders:
     #define USE_MQTT_TLS_CA_CERT   
     ``` 
     If you want to read more about compiling tools for Tasmota firmware, you can find it at https://tasmota.github.io/docs/Compile-your-build/. 
-    In order to create the **Telegram bot** and configure it to talk with your "tasmotized" Sonoff, you can follow <a href="https://minomodding.blogspot.com/2020/08/tasmota-integrazione-con-telegram.html.">this  guide</a>. 
+    In order to create the **Telegram bot** and configure it to talk with your "tasmotized" Sonoff, you can follow <a href="https://minomodding.blogspot.com/2020/08/tasmota-integrazione-con-telegram.html">this guide</a>. 
 
 <br>
 
