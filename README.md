@@ -19,7 +19,7 @@ Repo is divided into 3 subfolders:
     Every *env* variable used in the initial setup of the containers are placed in the ***.env*** file, such as grafana initial username and password, influxDB admin credentials, etc. **You need to edit this file** to set the credentials/configurations that you prefer.
 
     In order to give an abstract explanation about how the components that I chose for my RMM system work and communicate to each other, I've realized this conceptual schema.
-
+ 
     
 
 
