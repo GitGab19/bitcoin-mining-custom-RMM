@@ -26,11 +26,11 @@ Repo is divided into ***3 subfolders***:
     
 - <ins>***/sensors***</ins> &nbsp; <img align="top" style="width:4vw" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/esp32.png"> &nbsp; <img align="top" style="width:4vw" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/arduino.png">
 
-    It contains *sensors_management.ino*: this is the file that needs to be **flashed** into the [ESP32](https://www.espressif.com/en/products/socs/esp32) in order to let it communicating sensors measurements by **MQTT messages** to the **MQTT broker** (*mosquitto*) that is running into Raspberry PI. <br>
+    It contains [*sensors_management.ino*](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/sensors/sensors_management.ino): this is the file that needs to be **flashed** into the [ESP32](https://www.espressif.com/en/products/socs/esp32) in order to let it communicating sensors measurements by **MQTT messages** to the **MQTT broker** (*mosquitto*) that is running into Raspberry PI. <br>
     <ins>Before</ins> flashing it, you need to change some lines of code, such as:
     ``` 
-    #define WIFI_SSID       // line 7
-    #define WIFI_PASSWORD   // line 8
+    #define WIFI_SSID "PUT HERE YOUR WIFI SSID"     // line 7
+    #define WIFI_PASSWORD "PUT HERE YOUR WIFI PASSWORD"   // line 8
     ``` 
     ``` 
     #define MQTT_HOST IPAddress(192, 168, 1, 170)   // line 14
