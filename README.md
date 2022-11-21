@@ -5,6 +5,7 @@
 
 ## **Introduction**
 <div align="justify">
+
 Repo contains a personal implementation of a custom ***Remote Monitoring and Management*** system for Bitcoin mining, which I developed during a prototyping phase project, with a <ins>single</ins> ASIC miner. Monitoring of the activity is managed through different tools like Docker, Grafana, InfluxDB, Telegraf, Mosquitto, Raspberry PI, ESP32 and various sensors. <br><br>
 
 Repo is divided into ***3 subfolders***:
