@@ -1,0 +1,63 @@
+version: '3.6'
+services:
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    restart: always
+    volumes:
+     - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+
+  telegraf:
+    image: telegraf
+    container_name: telegraf
+    restart: always
+    volumes:
+    - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    depends_on:
+      - influxdb
+    links:
+      - influxdb
+    ports:
+    - '8125:8125'
+
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - '8086:8086'
+    volumes:
+      - influxdb_storage:/var/lib/influxdb
+      - ./influxdb/scripts:/docker-entrypoint-initdb.d
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana-server
+    restart: always
+    depends_on:
+      - influxdb
+    env_file:
+      - .env
+    links:
+      - influxdb
+    ports:
+      - '3000:3000'
+    volumes:
+      - grafana_storage:/var/lib/grafana
+      - ./grafana/custom_grafana.ini:/etc/grafana/grafana.ini
+      - ./grafana/:/etc/grafana
+
+  miner-stats:
+    container_name: miner-stats
+    volumes:
+      - ./python_backend/miner_stats.py:/miner_stats.py
+    build: ./python_backend
+
+volumes:
+  grafana_storage: {}
+  influxdb_storage: {}
