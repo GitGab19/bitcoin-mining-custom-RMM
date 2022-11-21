@@ -55,10 +55,10 @@ Repo is divided into 3 subfolders:
     #define USE_MQTT_TLS_CA_CERT   
     ``` 
     If you want to read more about compiling tools for Tasmota firmware, you can find it at https://tasmota.github.io/docs/Compile-your-build/. 
-    In order to create the **Telegram bot** and configure it to talk with your "tasmotized" Sonoff, you can follow <a href="https://minomodding.blogspot.com/2020/08/tasmota-integrazione-con-telegram.html.">this  guide</a>. 
+    In order to create the **Telegram bot** and configure it to talk with your "tasmotized" Sonoff, you can follow <a href="https://minomodding.blogspot.com/2020/08/tasmota-integrazione-con-telegram.html">this guide</a>. 
 
 <br>
 
 ## **System Design**
-In order to clarify in a better way how the RMM system is built, you can have a look at the system design that I've chosen to define.  
+In order to clarify in a better way how the RMM system is built, you can have a look at the system design that I've chosen to define.  <br><br>
 <img src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/system-design.png">
