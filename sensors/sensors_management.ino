@@ -42,6 +42,7 @@ DHT dht(DHTPIN, DHTTYPE);
 /* Variables to hold sensor readings */ 
 float temp;
 float hum;
+int air;
 
 AsyncMqttClient mqttClient;
 TimerHandle_t mqttReconnectTimer;
@@ -138,13 +139,8 @@ void loop() {
     //temp = dht.readTemperature(true);
 
     /* Read air quality */ 
-    int air = analogRead(senPin);
-    
-   if(aire < MQ135_THRESHOLD_1){
-      Serial.print("Fresh Air: ");
-    } else {
-      Serial.print("Poor Air:");
-    }
+    air = analogRead(senPin);
+  
    Serial.print(air); // analog data
    Serial.println("PP");
 
@@ -172,9 +168,9 @@ void loop() {
 
 
     /* Publish an MQTT message on topic "sensors/air_quality" */
-    uint16_t packetIdPub3 = mqttClient.publish(MQTT_PUB_AIR, 1, true, String(aire).c_str());                            
-    //Serial.print("Publishing on topic %s at QoS 1, packetId: %i", MQTT_PUB_AIRE, packetIdPub3);
-    Serial.print(air);
+    uint16_t packetIdPub3 = mqttClient.publish(MQTT_PUB_AIR, 1, true, String(air).c_str());                            
+    Serial.print("Publishing on topic %s at QoS 1, packetId: %i", MQTT_PUB_AIRE, packetIdPub3);
+    Serial.printf("Message: %.2f \n", air);
     
   }
 }
