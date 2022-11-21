@@ -43,7 +43,7 @@ Repo is divided into 3 subfolders:
     ***More details about the subfolder contents are explained in a deeper way into its relative [README](./sensors/README.md)***.
 <br>
 
-- ***/tasmota_custom_firmware*** &nbsp; <img align="center" style="width:100px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tasmota.png"> &nbsp; 
+- ***/tasmota_custom_firmware*** &nbsp; <img align="center" style="width:100px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tasmota.png"> &nbsp;
   
     It contains my custom <a href="https://tasmota.github.io/docs/">Tasmota</a> firmware binary, customized by me in order to add the Telegram functionality to the original firmware version. This customization, once firmware is **flashed** into the <a href="https://sonoff.tech/product-document/diy-smart-switches-doc/powr2-doc/">Sonoff</a>, permits to link a personal Telegram bot to the smart switch, and power on/off the miner connected to it, **remotely**, using your smartphone.
 
