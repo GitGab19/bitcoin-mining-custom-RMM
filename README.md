@@ -9,9 +9,9 @@ Repo contains a personal implementation of a custom ***Remote Monitoring and Man
 
 Repo is divided into 3 subfolders:
 
-- ***miner-RMM/*** &nbsp; <img align="center" style="width:50px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/docker.webp"> &nbsp;
+- ***/miner-RMM*** &nbsp; <img align="center" style="width:50px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/docker.webp"> &nbsp;
 <img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/grafana.png"> &nbsp;
-<img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/telegraf.svg"> &nbsp;
+<img align="center" style="width:55px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/telegraf.svg"> &nbsp;
 <img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/influxdb.png"> &nbsp; <img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/mosquitto.png">
 
     It contains the **core part** of the project, including all the docker containers and their relative configuration files.
@@ -27,7 +27,7 @@ Repo is divided into 3 subfolders:
     ***More details about the subfolder contents are explained in a deeper way into its relative [README](./miner-RMM/README.md)***.
 <br>
     
-- ***sensors/*** &nbsp; <img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/esp32.jpg">
+- ***/sensors*** &nbsp; <img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/esp32.jpg">
   
     It contains *sensors_management.ino*: this is the file that needs to be **flashed** into the <a href="https://www.espressif.com/en/products/socs/esp32">ESP32</a> in order to let it communicating sensors measurements by **MQTT** messages to the MQTT broker (*mosquitto*) that will be installed into Raspberry PI. <br>
     Before flashing it, you need to change some lines of code, such as:
@@ -43,7 +43,7 @@ Repo is divided into 3 subfolders:
     ***More details about the subfolder contents are explained in a deeper way into its relative [README](./ESP32/README.md)***.
 <br>
 
-- ***tasmota_custom_firmware/*** &nbsp; <img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tasmota.png">
+- ***/tasmota_custom_firmware*** &nbsp; <img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tasmota.png">
   
     It contains my custom <a href="https://tasmota.github.io/docs/">Tasmota</a> firmware files, customized by me in order to add the Telegram functionality to the original firmware version. This customization, once firmware is **flashed** into the <a href="https://sonoff.tech/product-document/diy-smart-switches-doc/powr2-doc/">Sonoff</a>, permits to link a personal Telegram bot to the smart switch, and power on/off the miner connected to it, **remotely**.
 
