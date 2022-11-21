@@ -5,7 +5,7 @@
 
 ## **Introduction**
 
-Repo contains a personal implementation of a custom ***Remote Monitoring and Management*** system for Bitcoin mining, which I developed during a prototyping phase project, with a single ASIC miner. <br> Monitoring of the activity is managed through different tools like Docker, Grafana, InfluxDB, Raspberry PI, ESP32 and various sensors.
+Repo contains a personal implementation of a custom ***Remote Monitoring and Management*** system for Bitcoin mining, which I developed during a prototyping phase project, with a single ASIC miner. <br> Monitoring of the activity is managed through different tools like Docker, Grafana, InfluxDB, Telegraf, Mosquitto, Raspberry PI, ESP32 and various sensors.
 
 Repo is divided into 3 subfolders:
 
@@ -43,7 +43,7 @@ Repo is divided into 3 subfolders:
     ***More details about the subfolder contents are explained in a deeper way into its relative [README](./sensors/README.md)***.
 <br>
 
-- ***/tasmota_custom_firmware*** &nbsp; <img align="center" style="width:100px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tasmota.png"> &nbsp;
+- ***/tasmota_custom_firmware*** &nbsp; <img align="center" style="width:100px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tasmota.png"> &nbsp; <img align="center" style="width:80px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/telegram.png">
   
     It contains my custom <a href="https://tasmota.github.io/docs/">Tasmota</a> firmware binary, customized by me in order to add the Telegram functionality to the original firmware version. This customization, once firmware is **flashed** into the <a href="https://sonoff.tech/product-document/diy-smart-switches-doc/powr2-doc/">Sonoff</a>, permits to link a personal Telegram bot to the smart switch, and power on/off the miner connected to it, **remotely**, using your smartphone.
 
@@ -53,7 +53,7 @@ Repo is divided into 3 subfolders:
     #define USE_TELEGRAM 
     #define USE_MQTT_TLS_CA_CERT   
     ``` 
-    If you want to read more about compiling tools for Tasmota firmware, you can find it at https://tasmota.github.io/docs/Compile-your-build/. 
+    If you want to read more about compiling tools for Tasmota firmware, you can find it at https://tasmota.github.io/docs/Compile-your-build/. <br>
     **Flashing** the customized Tasmota firmware into Sonoff it's not a trivial operation, pay attention in this phase. Different flashing solutions are available at https://tasmota.github.io/docs/Getting-Started/#hardware-preparation, depending on platform you use to flash your Sonoff. <br>
     In order to create the **Telegram bot** and configure it to talk with your "tasmotized" Sonoff, you can follow <a href="https://minomodding.blogspot.com/2020/08/tasmota-integrazione-con-telegram.html">this guide</a>. <br><br>
     ***More details about the subfolder contents are explained in a deeper way into its relative [README](./tasmota_custom_firmware/README.md)***.
