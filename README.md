@@ -27,7 +27,8 @@ Repo is divided into 3 subfolders:
     ***More details about the subfolder contents are explained in a deeper way into its relative [README](./miner-RMM/README.md)***.
 <br>
     
-- ***sensors/*** &nbsp; <img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/esp32.jpg">
+- ***sensors/*** &nbsp; <img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/esp32.png"> &nbsp;
+<img align="center" style="width:70px" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/arduino.png">
   
     It contains *sensors_management.ino*: this is the file that needs to be **flashed** into the <a href="https://www.espressif.com/en/products/socs/esp32">ESP32</a> in order to let it communicating sensors measurements by **MQTT** messages to the MQTT broker (*mosquitto*) that will be installed into Raspberry PI. <br>
     Before flashing it, you need to change some lines of code, such as:
