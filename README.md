@@ -78,21 +78,31 @@ First of all, depending on the Bitcoin miner that you chose to buy, pay attentio
 Once you got these specifics, you have to setup the correct power supply infrastructure, such as power supply cables (oversized) and safety breaker switches.
 
 <ins>After having the energy system correctly managed</ins>, once you obtained the hardware components needed for this project, you can finally start following the **steps to replicate my own RMM system**:
-1. Setup the Sonoff
-   * Prepare the **Tasmota firmware** to flash into Sonoff:
-      * if you <ins>don't want</ins> to enable the **Telegram    functionality**, which permits to control the Sonoff switch by sending a simple message, you can directly to the official Tasmota guide from [here](<ins>) and follow it.
-      * if you <ins>want</ins> to add the **Telegram functionality**, you can:
+
+
+
+### 1. Sonoff setup
+ 
+<img align="right" width="25%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/serial-usb.JPG"> 
+
+* Prepare the **Tasmota firmware** to flash into Sonoff:
+    * if you <ins>want</ins> to add the **Telegram functionality**, you can:
         * directly download the version **already customized** by me [here](https://github.com/GitGab19/bitcoin-mining-custom-RMM/tree/main/tasmota_custom_firmware);
         * add the functionality and **compile the firmware by your own**, following the advices which I already mentioned above in the [tasmota_custom_firmware section](#tasmota);
-    * In both cases, in order to **flash the firmware into the Sonoff**, you need to buy a Serial-to-USB adapter (you can read more about it [here](https://tasmota.github.io/docs/Getting-Started/#serial-to-usb-adapter)). 
-    * Once firmware is **flashed**, your Sonoff is ready to be a fundamental componenent of the project:
-      * if you decided <ins>to add</ins> the **Telegram functionality**, my advice is to connect the Sonoff to a very basic object that can be controlled by a switch, such as a simple lamp, in order to setup and test the Telegram connection in a safer way.\
-      To setup the Telegram bot and configure it with the "tasmotized" Sonoff, you can follow [this guide](https://minomodding.blogspot.com/2020/08/tasmota-integrazione-con-telegram.html).
-      * if you <ins>didn't want</ins> the **Telegram functionality**, you can directly start assembling the power cables between wall, Sonoff and your miner.
-    <br><br>
-    <img align="center" style="width:50%" src="[../bitcoin-mining-custom-RMM/docs/images/](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/)serial-usb.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img align="center" style="width:35%" src="[../bitcoin-mining-custom-RMM/docs/images/](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/)sonoff.jpg">
+    * if you <ins>don't want</ins> to enable the **Telegram functionality**, which permits to control the Sonoff switch by sending a simple message, you can go directly to the official Tasmota guide from [here](https://tasmota.github.io/docs/Getting-Started/) and follow it. 
+* In both cases, in order to **flash the firmware into the Sonoff**, you need to buy a Serial-to-USB adapter (you can read more about it [here](https://tasmota.github.io/docs/Getting-Started/#serial-to-usb-adapter)).    
 
+<img align="right" style="width:15%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/sonoff.JPG">
+
+* Once firmware is **flashed**, your Sonoff is ready to be a fundamental componenent of the project:
+    * if you decided <ins>to add</ins> the **Telegram functionality**, my advice is to connect the Sonoff to a very basic object that can be controlled by a switch, such as a simple lamp, in order to setup and test the Telegram connection in a safer way.\
+      To setup the Telegram bot and configure it with the "tasmotized" Sonoff, you can follow [this guide](https://minomodding.blogspot.com/2020/08/tasmota-integrazione-con-telegram.html).
+    * if you <ins>didn't want</ins> the **Telegram functionality**, you can directly start assembling the power cables between wall, Sonoff and your miner.
+    
+### 2. ESP32 setup
+
+
+### 3. Raspberry setup
 
 
 ## **Conclusion**
