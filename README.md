@@ -8,6 +8,24 @@
 
 Repo contains a personal implementation of a custom ***Remote Monitoring and Management*** system for Bitcoin mining, which I developed during a prototyping phase project, with a <ins>single</ins> ASIC miner. Monitoring of the activity is managed through different tools like Docker, Grafana, InfluxDB, Telegraf, Mosquitto, Raspberry PI, ESP32 and various sensors. <br><br>
 
+## **Functional requirements**
+These are the **requirements** that I had for my project: they can be useful in order to have a generic idea of what the RMM system **can do and how it's built**.  
+| Functionality | Component used | Role | Status |
+| --- | --- | --- |:-:|
+| ***Remote switch*** on/off |[Sonoff powr2](https://sonoff.tech/product-document/diy-smart-switches-doc/powr2-doc/) (*tasmotized*) | Smart switch | :white_check_mark: |
+| ***Remote access*** to RMM system | [Raspberry PI 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) | **VNC** server | :white_check_mark: |
+| ***Power consumption*** and data(voltage/current) monitoring |[Sonoff powr2](https://sonoff.tech/product-document/diy-smart-switches-doc/powr2-doc/) (*tasmotized*) | Power meter | :white_check_mark: |
+| ***Temp/Hum*** measurement (environmental) | [DHT22](https://lastminuteengineers.com/dht11-dht22-arduino-tutorial/) | Temp/Hum sensor | :white_check_mark: |
+| ***Smoke*** detection | [MQ2](https://lastminuteengineers.com/mq2-gas-senser-arduino-tutorial/) | Gas sensor | :white_check_mark: |
+| Sensors data ***management*** | [ESP32](https://www.espressif.com/en/products/socs/esp32) | Sensors control board and **MQTT client** | :white_check_mark: |
+| ***Hashrate*** visualization | [*miner_stats.py* script](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/python_backend/miner_stats.py) | Socket ***reader*** | :white_check_mark: |
+
+
+## **System Design**
+In order to understand in a better way **how** the RMM system architecture, you can have a look at the *system design* that I've chosen to use in my context. <br><br>
+<img style="width:75%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/system-design.png">
+
+## **Repository structure**
 Repo is divided into ***3 subfolders***:
 
 - <ins>***/miner-RMM***</ins> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/docker.webp"> &nbsp;
@@ -53,24 +71,6 @@ It contains [*sensors_management.ino*](https://github.com/GitGab19/bitcoin-minin
     **Flashing** the customized Tasmota firmware into Sonoff it's not a trivial operation, pay attention in this phase. Different flashing solutions are available at https://tasmota.github.io/docs/Getting-Started/#hardware-preparation, depending on platform you use to flash your Sonoff. <br>
     In order to create the **Telegram bot** and configure it to talk with your "tasmotized" Sonoff, you can follow [this guide](https://minomodding.blogspot.com/2020/08/tasmota-integrazione-con-telegram.html). <br><br>
 </div>
-
-
-## **Functional requirements**
-| Functionality | Component used | Role | Status |
-| --- | --- | --- |:-:|
-| ***Remote switch*** on/off |[Sonoff powr2](https://sonoff.tech/product-document/diy-smart-switches-doc/powr2-doc/) (*tasmotized*) | Smart switch | :white_check_mark: |
-| ***Remote access*** to RMM system | [Raspberry PI 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) | **VNC** server | :white_check_mark: |
-| ***Power consumption*** and data(voltage/current) monitoring |[Sonoff powr2](https://sonoff.tech/product-document/diy-smart-switches-doc/powr2-doc/) (*tasmotized*) | Power meter | :white_check_mark: |
-| ***Temp/Hum*** measurement (environmental) | [DHT22](https://lastminuteengineers.com/dht11-dht22-arduino-tutorial/) | Temp/Hum sensor | :white_check_mark: |
-| ***Smoke*** detection | [MQ2](https://lastminuteengineers.com/mq2-gas-senser-arduino-tutorial/) | Gas sensor | :white_check_mark: |
-| Sensors data ***management*** | [ESP32](https://www.espressif.com/en/products/socs/esp32) | Sensors control board and **MQTT client** | :white_check_mark: |
-| ***Hashrate*** visualization | [*miner_stats.py* script](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/python_backend/miner_stats.py) | Socket ***reader*** | :white_check_mark: |
-
-
-## **System Design**
-In order to understand in a better way **how** the RMM system is built, you can have a look at the *system design* that I've chosen to use in my context. <br><br>
-<img style="width:75%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/system-design.png">
-
 
 ## **Project setup**
 First of all, depending on the Bitcoin miner that you chose to buy, pay attention to the specifics about energy requirements of the miner, such as power on wall (kW), input current (Amp) and input voltage (V).\
