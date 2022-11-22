@@ -6,7 +6,8 @@
 ## **Introduction**
 <div align="justify">
 
-Repo contains a personal implementation of a custom ***Remote Monitoring and Management*** system for Bitcoin mining, which I developed during a prototyping phase project, with a <ins>single</ins> ASIC miner. Monitoring of the activity is managed through different tools like Docker, Grafana, InfluxDB, Telegraf, Mosquitto, Raspberry PI, ESP32 and various sensors. <br><br>
+Repo contains a personal implementation of a custom ***Remote Monitoring and Management*** system for Bitcoin mining, which I developed during a prototyping phase project, with a <ins>single</ins> ASIC miner. Monitoring of the activity is managed through different tools like Docker, Grafana, InfluxDB, Telegraf, Mosquitto, Raspberry PI, ESP32 and various sensors. 
+</div>
 
 ## **Functional requirements**
 These are the **requirements** that I had for my project: they can be useful in order to have a generic idea of what the RMM system **can do and how it's built**.  
@@ -20,9 +21,10 @@ These are the **requirements** that I had for my project: they can be useful in 
 | Sensors data ***management*** | [ESP32](https://www.espressif.com/en/products/socs/esp32) | Sensors control board and **MQTT client** | :white_check_mark: |
 | ***Hashrate*** visualization | [*miner_stats.py* script](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/python_backend/miner_stats.py) | Socket ***reader*** | :white_check_mark: |
 
+<div align="justify">
 
 ## **System Design**
-In order to understand in a better way **how** the RMM system architecture, you can have a look at the *system design* that I've chosen to use in my context. <br><br>
+In order to understand in a better way the **RMM system architecture**, you can have a look at the **system design** that I've chosen to use in my context. <br><br>
 <img style="width:75%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/system-design.png">
 
 ## **Repository structure**
@@ -32,8 +34,10 @@ Repo is divided into ***3 subfolders***:
 <img align="top" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/grafana.png"> &nbsp;
 <img align="top" style="width:4%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/telegraf.svg"> &nbsp;
 <img align="top" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/influxdb.png"> &nbsp; <img align="center" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/mosquitto.png"> <br>
-It contains the **core part** of this project, including all the docker containers and their relative configuration files.\
-    Every *env* variable used in the initial setup of the containers are placed in the ***.env*** file, such as Grafana initial username and password, InfluxDB admin credentials, etc. <ins>You need</ins> to edit the [.env](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/.env) file to setup the credentials/configurations that you prefer.\
+    It contains the **core part** of this project, including all the docker containers and their relative configuration files.\
+    Every *env* variable used in the initial setup of the containers are placed in the ***.env*** file, such as Grafana initial username and password, InfluxDB admin credentials, etc. <br>
+    > **Warning** <ins>You need</ins> to edit the [.env](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/.env) file to setup the credentials/configurations that you prefer.
+    
     In order to give a general explanation about the behaviour of the services wrapped into [docker-compose.yml](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/docker-compose.yml) and the interaction between each other, have a look at the schema below.
     <p align="left">
     <img align="center" style="width:75%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/docker-components.png">
@@ -45,7 +49,7 @@ It contains the **core part** of this project, including all the docker containe
 It contains [*sensors_management.ino*](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/sensors/sensors_management.ino): this is the file that needs to be **flashed** into the [ESP32](https://www.espressif.com/en/products/socs/esp32) in order to let it communicating sensors measurements by **MQTT messages** to the **MQTT broker** (*mosquitto*) that is running into Raspberry PI. <br>
     <span id="esp32-code">
 
-    <ins>Before</ins> flashing it, you need to change some lines of code, such as:
+    > **Warning** <ins>Before</ins> flashing it, you need to change some lines of code, such as:
     ``` 
     #define WIFI_SSID "PUT HERE YOUR WIFI SSID"     // line 7
     #define WIFI_PASSWORD "PUT HERE YOUR WIFI PASSWORD"   // line 8
@@ -70,7 +74,7 @@ It contains [*sensors_management.ino*](https://github.com/GitGab19/bitcoin-minin
     If you want to read more about compiling tools for Tasmota firmware, you can find it at https://tasmota.github.io/docs/Compile-your-build/. <br>
     **Flashing** the customized Tasmota firmware into Sonoff it's not a trivial operation, pay attention in this phase. Different flashing solutions are available at https://tasmota.github.io/docs/Getting-Started/#hardware-preparation, depending on platform you use to flash your Sonoff. <br>
     In order to create the **Telegram bot** and configure it to talk with your "tasmotized" Sonoff, you can follow [this guide](https://minomodding.blogspot.com/2020/08/tasmota-integrazione-con-telegram.html). <br><br>
-</div>
+
 
 ## **Project setup**
 First of all, depending on the Bitcoin miner that you chose to buy, pay attention to the specifics about energy requirements of the miner, such as power on wall (kW), input current (Amp) and input voltage (V).\
@@ -134,3 +138,5 @@ You can follow different guides present on Internet, such as https://www.hackste
 I've decided to publish my personal project for anyone who is interested in experimenting with mining, especially for the ones who are willing to try starting with just a <ins>single miner</ins>. 
 As illustrated in the *system design*, my solution was built around an *Antminer S19J pro*, but it can be easily adapted for any other miner on the market.<br><br>
 Feel free to open issues, comment it or contribute to the project!
+
+</div>
