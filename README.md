@@ -27,6 +27,8 @@ Repo is divided into ***3 subfolders***:
 - <ins>***/sensors***</ins> &nbsp; <img align="top" style="width:4%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/esp32.png"> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/arduino.png">
 
     It contains [*sensors_management.ino*](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/sensors/sensors_management.ino): this is the file that needs to be **flashed** into the [ESP32](https://www.espressif.com/en/products/socs/esp32) in order to let it communicating sensors measurements by **MQTT messages** to the **MQTT broker** (*mosquitto*) that is running into Raspberry PI. <br>
+    <p id="esp32-code">
+
     <ins>Before</ins> flashing it, you need to change some lines of code, such as:
     ``` 
     #define WIFI_SSID "PUT HERE YOUR WIFI SSID"     // line 7
@@ -35,8 +37,14 @@ Repo is divided into ***3 subfolders***:
     ``` 
     #define MQTT_HOST IPAddress(192, 168, 1, 170)   // line 14
     ``` 
-    Other specific settings can be customized directly into code, in which there are already comments to better understand it. <br>
-    In order to flash the ESP32 with this code, you can do it using the [Arduino IDE](https://www.arduino.cc/en/software), following [this guide](https://medium.com/@pauljoegeorge/setup-arduino-ide-to-flash-a-project-to-esp32-34db014a7e65).<br><br>
+    Other specific settings can be customized directly into code, in which there are already comments to better understand it. </p><br>
+
+    <p id="esp32-flashing">
+
+    In order to **flash the ESP32** with this code, you can do it using the [Arduino IDE](https://www.arduino.cc/en/software), following [this guide](https://medium.com/@pauljoegeorge/setup-arduino-ide-to-flash-a-project-to-esp32-34db014a7e65).
+    </p>
+    <br><br>
+    
     *More details about the subfolder contents are explained in a deeper way into its relative [<ins>README</ins>](./sensors/README.md)*.
 
 - <ins id="tasmota">***/tasmota_custom_firmware***</ins> &nbsp; <img align="top" style="width:8%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tasmota.png"> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tg.png">
@@ -80,27 +88,35 @@ Once you got these specifics, you have to setup the correct power supply infrast
 <ins>After having the energy system correctly managed</ins>, once you obtained the hardware components needed for this project, you can finally start following the **steps to replicate my own RMM system**:
 
 
-
 ### 1. Sonoff setup
  
 <img align="right" width="25%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/serial-usb.JPG"> 
 
-* Prepare the **Tasmota firmware** to flash into Sonoff:
-    * if you <ins>want</ins> to add the **Telegram functionality**, you can:
+* Prepare the **Tasmota firmware** that needs to be flashed into Sonoff:
+    * if you <ins>want</ins> to add the **Telegram functionality**, which permits to control the Sonoff switch by sending a simple message, you can:
         * directly download the version **already customized** by me [here](https://github.com/GitGab19/bitcoin-mining-custom-RMM/tree/main/tasmota_custom_firmware);
         * add the functionality and **compile the firmware by your own**, following the advices which I already mentioned above in the [tasmota_custom_firmware section](#tasmota);
-    * if you <ins>don't want</ins> to enable the **Telegram functionality**, which permits to control the Sonoff switch by sending a simple message, you can go directly to the official Tasmota guide from [here](https://tasmota.github.io/docs/Getting-Started/) and follow it. 
+    * if you <ins>don't want</ins> to enable the **Telegram functionality**, you can go directly to the official Tasmota guide from [here](https://tasmota.github.io/docs/Getting-Started/) and follow it. 
 * In both cases, in order to **flash the firmware into the Sonoff**, you need to buy a Serial-to-USB adapter (you can read more about it [here](https://tasmota.github.io/docs/Getting-Started/#serial-to-usb-adapter)).    
 
 <img align="right" style="width:15%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/sonoff.JPG">
 
 * Once firmware is **flashed**, your Sonoff is ready to be a fundamental componenent of the project:
-    * if you decided <ins>to add</ins> the **Telegram functionality**, my advice is to connect the Sonoff to a very basic object that can be controlled by a switch, such as a simple lamp, in order to setup and test the Telegram connection in a safer way.\
+    * if you <ins>decided to add</ins> the **Telegram functionality**, my advice is to connect the Sonoff to a very basic object that can be controlled by a switch, such as a simple lamp, in order to setup and test the Telegram connection in a safer way.\
       To setup the Telegram bot and configure it with the "tasmotized" Sonoff, you can follow [this guide](https://minomodding.blogspot.com/2020/08/tasmota-integrazione-con-telegram.html).
-    * if you <ins>didn't want</ins> the **Telegram functionality**, you can directly start assembling the power cables between wall, Sonoff and your miner.
+    * if you <ins>didn't want</ins> the **Telegram functionality**, you can directly start plugging the power cables between wall, Sonoff and your miner.
     
 ### 2. ESP32 setup
+* Prepare the firmware that needs to be flashed into ESP32, which is responsible of letting ESP32 send MQTT messages containing the sensors measurements:
+  * have a look at the [*sensors_management.ino*](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/sensors/sensors_management.ino) file, and change the lines of code cited [here](#esp32-code), in order to tell to the ESP32 the corrrect credentials of your wifi router and the local IP address of the MQTT broker (**which is the <ins>local IP address that you chose to set to your raspberry PI**</ins>);
+  * if you have similar but not equal sensors to the ones specified ([DHT22](https://lastminuteengineers.com/dht11-dht22-arduino-tutorial/) and [MQ2](https://lastminuteengineers.com/mq2-gas-senser-arduino-tutorial/)), you could have to modify some other parts, uncommenting or adding some lines of code;
+* Flash the firmware to ESP32, following [these](#esp32-flashing) advices.
 
+<img align="right" style="width:20%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/my-esp32.JPG">
+
+* Insert the ESP32 into the board and connect it with the sensors above listed using different jumpers and wires.
+You can follow different guides present on Internet, such as https://www.hackster.io/ricky-wijaya/temperature-humidity-and-air-quality-control-3fc819.
+* Connect the ESP32 with your computer and verify from the Arduino IDE that everything is good, looking for the debug messages sent to the serial monitor tool of the IDE.
 
 ### 3. Raspberry setup
 
