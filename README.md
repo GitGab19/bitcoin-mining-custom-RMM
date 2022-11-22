@@ -100,7 +100,7 @@ Once you got these specifics, you have to setup the correct power supply infrast
     * if you <ins>don't want</ins> to enable the **Telegram functionality**, you can go directly to the official Tasmota guide from [here](https://tasmota.github.io/docs/Getting-Started/) and follow it. 
 * In both cases, in order to **flash the firmware into the Sonoff**, you need to buy a Serial-to-USB adapter (you can read more about it [here](https://tasmota.github.io/docs/Getting-Started/#serial-to-usb-adapter)).    
 
-<img align="right" style="width:15%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/sonoff.JPG">
+<img align="right" style="width:25%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/sonoff.JPG">
 
 * Once Tasmota custom firmware is **flashed**, your Sonoff is ready to be configured:
   * if it's already connected to your wi-fi router, scan your local network, find its IP address and open a browser that points to it
