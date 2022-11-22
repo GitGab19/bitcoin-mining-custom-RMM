@@ -79,7 +79,17 @@ Once you got these specifics, you have to setup the correct power supply infrast
 <ins>After having the energy system correctly managed</ins>, once you obtained the hardware components needed for this project, you can finally start following the **steps to replicate my own RMM system**:
 
 
-### 1. Sonoff setup
+
+### 1. Raspberry setup
+> **Warning**
+> In my project I decided to use a Raspberry PI 4, but I'd like to underline that every other device can be good as well, such as a normal notebook or a generic server. The important thing is that it can be reached someway remotely (through VNC, VPN, etc.), so it needs to support one of these methods.
+
+* Assuming to use a Raspberry PI, first of all you have to assemble its components(cover, fans, etc.)
+* Flash the SD card with the standard OS (you can follow [this guide](https://www.raspberrypi.com/documentation/computers/getting-started.html))
+* Plug in a monitor, keyboard and mouse to the Raspberry and boot it
+
+
+### 2. Sonoff setup
  
 <img align="right" width="25%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/serial-usb.JPG"> 
 
@@ -92,12 +102,22 @@ Once you got these specifics, you have to setup the correct power supply infrast
 
 <img align="right" style="width:15%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/sonoff.JPG">
 
-* Once firmware is **flashed**, your Sonoff is ready to be a fundamental componenent of the project:
-    * if you <ins>decided to add</ins> the **Telegram functionality**, my advice is to connect the Sonoff to a very basic object that can be controlled by a switch, such as a simple lamp, in order to setup and test the Telegram connection in a safer way.\
+* Once Tasmota custom firmware is **flashed**, your Sonoff is ready to be configured:
+  * if it's already connected to your wi-fi router, scan your local network, find its IP address and open a browser that points to it
+  * if it's not, do a rapid triple-click onto the unique physical button present on Sonoff, entering its pairing mode
+    * at this point you can find the "TASMOTA-xxx" wifi network from your computer, click on it to connect. This will take you to the configuration page of Tasmota, in which you can set the wifi parameters;
+  * go to **Configuration->Configure MQTT** and:
+    * set the **MQTT host** (broker) to connect with, entering the <ins>**Raspberry local IP address**</ins>;
+    * leave all the other fields as they are (make sure the <ins>topic</ins> field is filled with **"tasmota"**);
+* Now your Sonoff is completely configured, and you can start using it:
+  * if you <ins>decided to add</ins> the **Telegram functionality**, my advice is to connect the Sonoff to a very basic object that can be controlled by a switch, such as a simple lamp, in order to setup and test the Telegram interaction in a safer way.\
       To setup the Telegram bot and configure it with the "tasmotized" Sonoff, you can follow [this guide](https://minomodding.blogspot.com/2020/08/tasmota-integrazione-con-telegram.html).
-    * if you <ins>didn't want</ins> the **Telegram functionality**, you can directly start plugging the power cables between wall, Sonoff and your miner.
+* If you <ins>didn't want</ins> the **Telegram functionality**, or <ins>after having **tested**</ins> the Telegram functionality, you can directly start plugging the power cables between the wall, Sonoff and your miner.
+
+If you don't know MQTT protocol and want to know more, you can start by reading the Tasmota documentation and follow its relative links: https://tasmota.github.io/docs/MQTT/#topic 
+  
     
-### 2. ESP32 setup
+### 3. ESP32 and sensors setup
 <img align="right" style="width:15%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/my-esp32.JPG">
 
 * **Prepare the firmware** that needs to be flashed into ESP32, which is responsible of letting **ESP32 send MQTT messages** containing the sensors measurements:
@@ -108,8 +128,6 @@ Once you got these specifics, you have to setup the correct power supply infrast
 You can follow different guides present on Internet, such as https://www.hackster.io/ricky-wijaya/temperature-humidity-and-air-quality-control-3fc819.
 * Connect the ESP32 with your computer and verify from the Arduino IDE that everything is good, looking for the debug **messages sent to the serial monitor tool** of the IDE.
 * At this point your ESP32 is correctly setup and it's ready to be plugged into the experimental location (as near as possible to the miner) with a generic power adapter. 
-
-### 3. Raspberry setup
 
 
 ## **Conclusion**
