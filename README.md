@@ -81,7 +81,7 @@ Once you got these specifics, you have to setup the correct power supply infrast
 
 
 ### 1. Raspberry setup
-> **Warning**
+> **Warning**<br>
 > In my project I decided to use a Raspberry PI 4, but I'd like to underline that every other device can be good as well, such as a normal notebook or a generic server. The important thing is that it can be reached someway remotely (through VNC, VPN, etc.), so it needs to support one of these methods.
 
 * Assuming to use a Raspberry PI, first of all you have to assemble its components(cover, fans, etc.)
