@@ -27,7 +27,7 @@ Repo is divided into ***3 subfolders***:
 - <ins>***/sensors***</ins> &nbsp; <img align="top" style="width:4%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/esp32.png"> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/arduino.png">
 
     It contains [*sensors_management.ino*](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/sensors/sensors_management.ino): this is the file that needs to be **flashed** into the [ESP32](https://www.espressif.com/en/products/socs/esp32) in order to let it communicating sensors measurements by **MQTT messages** to the **MQTT broker** (*mosquitto*) that is running into Raspberry PI. <br>
-    <p id="esp32-code">
+    <span id="esp32-code">
 
     <ins>Before</ins> flashing it, you need to change some lines of code, such as:
     ``` 
@@ -37,13 +37,12 @@ Repo is divided into ***3 subfolders***:
     ``` 
     #define MQTT_HOST IPAddress(192, 168, 1, 170)   // line 14
     ``` 
-    Other specific settings can be customized directly into code, in which there are already comments to better understand it. </p><br>
-
-    <p id="esp32-flashing">
-
+    Other specific settings can be customized directly into code, in which there are already comments to better understand it. </span><br>
+    <span id="esp32-flashing"> 
     In order to **flash the ESP32** with this code, you can do it using the [Arduino IDE](https://www.arduino.cc/en/software), following [this guide](https://medium.com/@pauljoegeorge/setup-arduino-ide-to-flash-a-project-to-esp32-34db014a7e65).
-    </p>
-    <br><br>
+    
+    </span>
+    
     
     *More details about the subfolder contents are explained in a deeper way into its relative [<ins>README</ins>](./sensors/README.md)*.
 
@@ -107,16 +106,16 @@ Once you got these specifics, you have to setup the correct power supply infrast
     * if you <ins>didn't want</ins> the **Telegram functionality**, you can directly start plugging the power cables between wall, Sonoff and your miner.
     
 ### 2. ESP32 setup
-* Prepare the firmware that needs to be flashed into ESP32, which is responsible of letting ESP32 send MQTT messages containing the sensors measurements:
-  * have a look at the [*sensors_management.ino*](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/sensors/sensors_management.ino) file, and change the lines of code cited [here](#esp32-code), in order to tell to the ESP32 the corrrect credentials of your wifi router and the local IP address of the MQTT broker (**which is the <ins>local IP address that you chose to set to your raspberry PI**</ins>);
-  * if you have similar but not equal sensors to the ones specified ([DHT22](https://lastminuteengineers.com/dht11-dht22-arduino-tutorial/) and [MQ2](https://lastminuteengineers.com/mq2-gas-senser-arduino-tutorial/)), you could have to modify some other parts, uncommenting or adding some lines of code;
-* Flash the firmware to ESP32, following [these](#esp32-flashing) advices.
+<img align="right" style="width:15%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/my-esp32.JPG">
 
-<img align="right" style="width:20%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/my-esp32.JPG">
-
-* Insert the ESP32 into the board and connect it with the sensors above listed using different jumpers and wires.
+* **Prepare the firmware** that needs to be flashed into ESP32, which is responsible of letting **ESP32 send MQTT messages** containing the sensors measurements:
+  * have a look at the [*sensors_management.ino*](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/sensors/sensors_management.ino) file, and change the lines of code cited [here](#esp32-code), in order to tell to the ESP32 the corrrect credentials of your wifi router and the local IP address of the MQTT broker (**which is the <ins>local IP address that you chose to set to your raspberry PI**</ins>);  
+  * if you have similar <ins>but not equal</ins> sensors to the ones specified ([DHT22](https://lastminuteengineers.com/dht11-dht22-arduino-tutorial/) and [MQ2](https://lastminuteengineers.com/mq2-gas-senser-arduino-tutorial/)), you **could have to modify** some other parts, uncommenting or adding some lines of code;
+* **Flash the firmware to ESP32**, following [these](#esp32-flashing) advices.
+* Insert the **ESP32 into the board** and connect it with the sensors above listed using different jumpers and wires.
 You can follow different guides present on Internet, such as https://www.hackster.io/ricky-wijaya/temperature-humidity-and-air-quality-control-3fc819.
-* Connect the ESP32 with your computer and verify from the Arduino IDE that everything is good, looking for the debug messages sent to the serial monitor tool of the IDE.
+* Connect the ESP32 with your computer and verify from the Arduino IDE that everything is good, looking for the debug **messages sent to the serial monitor tool** of the IDE.
+* At this point your ESP32 is correctly setup and it's ready to be plugged into the experimental location (as near as possible to the miner) with a generic power adapter. 
 
 ### 3. Raspberry setup
 
