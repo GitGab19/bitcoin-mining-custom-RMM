@@ -13,9 +13,8 @@ Repo is divided into ***3 subfolders***:
 - <ins>***/miner-RMM***</ins> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/docker.webp"> &nbsp;
 <img align="top" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/grafana.png"> &nbsp;
 <img align="top" style="width:4%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/telegraf.svg"> &nbsp;
-<img align="top" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/influxdb.png"> &nbsp; <img align="center" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/mosquitto.png"> 
-    
-    It contains the **core part** of this project, including all the docker containers and their relative configuration files.\
+<img align="top" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/influxdb.png"> &nbsp; <img align="center" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/mosquitto.png"> <br>
+It contains the **core part** of this project, including all the docker containers and their relative configuration files.\
     Every *env* variable used in the initial setup of the containers are placed in the ***.env*** file, such as Grafana initial username and password, InfluxDB admin credentials, etc. <ins>You need</ins> to edit the [.env](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/.env) file to setup the credentials/configurations that you prefer.\
     In order to give a general explanation about the behaviour of the services wrapped into [docker-compose.yml](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/docker-compose.yml) and the interaction between each other, have a look at the schema below.
     <p align="left">
@@ -24,9 +23,8 @@ Repo is divided into ***3 subfolders***:
     
     *More details about the subfolder contents are explained in a deeper way into its relative [<ins>README</ins>](./miner-RMM/README.md)*.
     
-- <ins>***/sensors***</ins> &nbsp; <img align="top" style="width:4%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/esp32.png"> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/arduino.png">
-
-    It contains [*sensors_management.ino*](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/sensors/sensors_management.ino): this is the file that needs to be **flashed** into the [ESP32](https://www.espressif.com/en/products/socs/esp32) in order to let it communicating sensors measurements by **MQTT messages** to the **MQTT broker** (*mosquitto*) that is running into Raspberry PI. <br>
+- <ins>***/sensors***</ins> &nbsp; <img align="top" style="width:4%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/esp32.png"> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/arduino.png"> <br>
+It contains [*sensors_management.ino*](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/sensors/sensors_management.ino): this is the file that needs to be **flashed** into the [ESP32](https://www.espressif.com/en/products/socs/esp32) in order to let it communicating sensors measurements by **MQTT messages** to the **MQTT broker** (*mosquitto*) that is running into Raspberry PI. <br>
     <span id="esp32-code">
 
     <ins>Before</ins> flashing it, you need to change some lines of code, such as:
@@ -37,17 +35,12 @@ Repo is divided into ***3 subfolders***:
     ``` 
     #define MQTT_HOST IPAddress(192, 168, 1, 170)   // line 14
     ``` 
-    Other specific settings can be customized directly into code, in which there are already comments to better understand it. </span><br>
+    Other specific settings can be customized directly into code, in which there are already comments to better understand it. 
+    </span><br>
     <span id="esp32-flashing"> 
     In order to **flash the ESP32** with this code, you can do it using the [Arduino IDE](https://www.arduino.cc/en/software), following [this guide](https://medium.com/@pauljoegeorge/setup-arduino-ide-to-flash-a-project-to-esp32-34db014a7e65).
-    
     </span>
-    
-    
-    *More details about the subfolder contents are explained in a deeper way into its relative [<ins>README</ins>](./sensors/README.md)*.
-
-- <ins id="tasmota">***/tasmota_custom_firmware***</ins> &nbsp; <img align="top" style="width:8%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tasmota.png"> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tg.png">
-  
+- <ins id="tasmota">***/tasmota_custom_firmware***</ins> &nbsp; <img align="top" style="width:8%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tasmota.png"> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tg.png"><br>
     It contains my custom [Tasmota](https://tasmota.github.io/docs/) firmware binary, customized by me in order to add the Telegram functionality to the original firmware version. This customization, once firmware is **flashed** into the [Sonoff](https://sonoff.tech/product-document/diy-smart-switches-doc/powr2-doc/), permits to link a personal Telegram bot to the smart switch, and power on/off the miner connected to it, **remotely**, using your smartphone.
 
     In order to not trusting me and my customized firmware, if you want to enable the above descripted functionality, have a look at https://github.com/benzino77/tasmocompiler for compiling your customized version of the firmware to install into your Sonoff switch. <br> 
@@ -59,7 +52,6 @@ Repo is divided into ***3 subfolders***:
     If you want to read more about compiling tools for Tasmota firmware, you can find it at https://tasmota.github.io/docs/Compile-your-build/. <br>
     **Flashing** the customized Tasmota firmware into Sonoff it's not a trivial operation, pay attention in this phase. Different flashing solutions are available at https://tasmota.github.io/docs/Getting-Started/#hardware-preparation, depending on platform you use to flash your Sonoff. <br>
     In order to create the **Telegram bot** and configure it to talk with your "tasmotized" Sonoff, you can follow [this guide](https://minomodding.blogspot.com/2020/08/tasmota-integrazione-con-telegram.html). <br><br>
-    *More details about the subfolder contents are explained in a deeper way into its relative [<ins>README</ins>](./tasmota_custom_firmware/README.md)*.
 </div>
 
 
