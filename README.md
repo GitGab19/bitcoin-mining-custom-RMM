@@ -30,13 +30,13 @@ In order to understand in a better way the **RMM system architecture**, you can 
 ## **Repository structure**
 Repo is divided into ***3 subfolders***:
 
-- <ins>***/miner-RMM***</ins> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/docker.webp"> &nbsp;
-<img align="top" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/grafana.png"> &nbsp;
-<img align="top" style="width:4%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/telegraf.svg"> &nbsp;
-<img align="top" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/influxdb.png"> &nbsp; <img align="center" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/mosquitto.png"> <br>
+- <ins>***/miner-RMM***</ins> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/docker.webp"> &nbsp;
+<img align="top" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/grafana.png"> &nbsp;
+<img align="top" style="width:4%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/telegraf.svg"> &nbsp;
+<img align="top" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/influxdb.png"> &nbsp; <img align="center" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/mosquitto.png"> <br>
     It contains the **core part** of this project, including all the docker containers and their relative configuration files.\
     Every *env* variable used in the initial setup of the containers are placed in the ***.env*** file, such as Grafana initial username and password, InfluxDB admin credentials, etc. <br>
-    > **Warning** <ins>You need</ins> to edit the [.env](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/.env) file to setup the credentials/configurations that you prefer.
+    > **Warning** <ins>You need</ins> to edit the [.env](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/.env) file to setup the default credentials/configurations that you prefer.
     
     In order to give a general explanation about the behaviour of the services wrapped into [docker-compose.yml](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/docker-compose.yml) and the interaction between each other, have a look at the schema below.
     <p align="left">
@@ -45,7 +45,7 @@ Repo is divided into ***3 subfolders***:
     
     *More details about the subfolder contents are explained in a deeper way into its relative [<ins>README</ins>](./miner-RMM/README.md)*.
     
-- <ins>***/sensors***</ins> &nbsp; <img align="top" style="width:4%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/esp32.png"> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/arduino.png"> <br>
+- <ins>***/sensors***</ins> &nbsp; <img align="top" style="width:4%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/esp32.png"> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/arduino.png"> <br>
 It contains [*sensors_management.ino*](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/sensors/sensors_management.ino): this is the file that needs to be **flashed** into the [ESP32](https://www.espressif.com/en/products/socs/esp32) in order to let it communicating sensors measurements by **MQTT messages** to the **MQTT broker** (*mosquitto*) that is running into Raspberry PI. <br>
     <span id="esp32-code">
 
@@ -62,7 +62,7 @@ It contains [*sensors_management.ino*](https://github.com/GitGab19/bitcoin-minin
     <span id="esp32-flashing"> 
     In order to **flash the ESP32** with this code, you can do it using the [Arduino IDE](https://www.arduino.cc/en/software), following [this guide](https://medium.com/@pauljoegeorge/setup-arduino-ide-to-flash-a-project-to-esp32-34db014a7e65).
     </span>
-- <ins id="tasmota">***/tasmota_custom_firmware***</ins> &nbsp; <img align="top" style="width:8%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tasmota.png"> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/tg.png"><br>
+- <ins id="tasmota">***/tasmota_custom_firmware***</ins> &nbsp; <img align="top" style="width:8%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/tasmota.png"> &nbsp; <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/tg.png"><br>
     It contains my custom [Tasmota](https://tasmota.github.io/docs/) firmware binary, customized by me in order to add the Telegram functionality to the original firmware version. This customization, once firmware is **flashed** into the [Sonoff](https://sonoff.tech/product-document/diy-smart-switches-doc/powr2-doc/), permits to link a personal Telegram bot to the smart switch, and power on/off the miner connected to it, **remotely**, using your smartphone.
 
     In order to not trusting me and my customized firmware, if you want to enable the above descripted functionality, have a look at https://github.com/benzino77/tasmocompiler for compiling your customized version of the firmware to install into your Sonoff switch. <br> 
@@ -86,16 +86,45 @@ Once you got these specifics, you have to setup the correct power supply infrast
 
 ### 1. Raspberry setup
 > **Warning**<br>
-> In my project I decided to use a Raspberry PI 4, but I'd like to underline that every other device can be good as well, such as a normal notebook or a generic server. The important thing is that it can be reached someway remotely (through VNC, VPN, etc.), so it needs to support one of these methods.
+> In my project I decided to use a Raspberry PI 4, but I'd like to underline that every other device can be good as well, such as a normal notebook or a generic server. **The important thing is that it can be reached someway remotely (through VNC, VPN, etc.)**, so it needs to support one of these methods.
 
-* Assuming to use a Raspberry PI, first of all you have to assemble its components(cover, fans, etc.)
-* Flash the SD card with the standard OS (you can follow [this guide](https://www.raspberrypi.com/documentation/computers/getting-started.html))
+* **Assuming to use a Raspberry PI**, first of all you have to assemble its components (cover, fans, etc.)
+* **Flash the SD card** with the standard OS (you can follow [this guide](https://www.raspberrypi.com/documentation/computers/getting-started.html))
 * Plug in a monitor, keyboard and mouse to the Raspberry and boot it
-
-
+* Set a static local IP for your Raspberry PI: <ins>**it's important that it doesn't change because both the Sonoff and the sensors board will be setup in order to find the MQTT broker at this fixed IP address**</ins>
+* **Install the software requirements** for the RMM system:
+  * Git (guide [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git))
+  * Docker (guide [here](https://docs.docker.com/get-docker/))
+* Clone the repository locally:
+    ```
+    git clone https://github.com/GitGab19/bitcoin-mining-custom-RMM 
+    ```
+* Enter the miner-RMM folder:
+    ```
+    cd miner-RMM 
+    ```
+* Once docker is running, launch this command from terminal:
+    ```
+    docker-compose up -d
+    ```
+* Open a new browser window and go to **localhost:3000**
+* You should be redirected to the **Grafana welcome screen**, like this one:
+    <img width="75%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/setup/grafana-welcome-screen.png">
+* Enter **Grafana default credentials** (which are set in [.env](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/.env) file):
+  * username: **admin**
+  * password: **admin**
+* **Set the new password** in the following step
+* You'll be redirected to the **Grafana home screen**, where you'll find the already created dashboard, called "**ASIC**":
+    <img width="75%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/setup/grafana-home-screen.png">
+* **Open that dashboard**, you'll enter this screen:
+    <img width="75%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/setup/asic-dashboard.png">
+* The **ON/OFF button** on the top-left corner of the dashboard will be able to power on/off your miner (<ins>**once correctly setup with your Sonoff!**</ins>)
+  * In order to setup this button to work properly with the Sonoff, you can find more helpful info [here](./miner-RMM/README.md)
+* All the other panels are already setup in order to show measurements data that will come from the Sonoff meter, environental sensors, and miner itself! 
+  
 ### 2. Sonoff setup
  
-<img align="right" width="25%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/serial-usb.JPG"> 
+<img align="right" width="25%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/setup/serial-usb.JPG"> 
 
 * Prepare the **Tasmota firmware** that needs to be flashed into Sonoff:
     * if you <ins>want</ins> to add the **Telegram functionality**, which permits to control the Sonoff switch by sending a simple message, you can:
@@ -104,7 +133,7 @@ Once you got these specifics, you have to setup the correct power supply infrast
     * if you <ins>don't want</ins> to enable the **Telegram functionality**, you can go directly to the official Tasmota guide from [here](https://tasmota.github.io/docs/Getting-Started/) and follow it. 
 * In both cases, in order to **flash the firmware into the Sonoff**, you need to buy a Serial-to-USB adapter (you can read more about it [here](https://tasmota.github.io/docs/Getting-Started/#serial-to-usb-adapter)).    
 
-<img align="right" style="width:25%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/sonoff.JPG">
+<img align="right" style="width:25%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/setup/sonoff.JPG">
 
 * Once Tasmota custom firmware is **flashed**, your Sonoff is ready to be configured:
   * if it's already connected to your wi-fi router, scan your local network, find its IP address and open a browser that points to it
@@ -122,7 +151,7 @@ If you don't know MQTT protocol and want to know more, you can start by reading 
   
     
 ### 3. ESP32 and sensors setup
-<img align="right" style="width:15%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/my-esp32.JPG">
+<img align="right" style="width:15%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/setup/my-esp32.JPG">
 
 * **Prepare the firmware** that needs to be flashed into ESP32, which is responsible of letting **ESP32 send MQTT messages** containing the sensors measurements:
   * have a look at the [*sensors_management.ino*](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/sensors/sensors_management.ino) file, and change the lines of code cited [here](#esp32-code), in order to tell to the ESP32 the corrrect credentials of your wifi router and the local IP address of the MQTT broker (**which is the <ins>local IP address that you chose to set to your raspberry PI**</ins>);  
