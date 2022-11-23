@@ -91,7 +91,9 @@ Once you got these specifics, you have to setup the correct power supply infrast
 * **Assuming to use a Raspberry PI**, first of all you have to assemble its components (cover, fans, etc.)
 * **Flash the SD card** with the standard OS (you can follow [this guide](https://www.raspberrypi.com/documentation/computers/getting-started.html))
 * Plug in a monitor, keyboard and mouse to the Raspberry and boot it
-* Set a static local IP for your Raspberry PI: <ins>**it's important that it doesn't change because both the Sonoff and the sensors board will be setup in order to find the MQTT broker at this fixed IP address**</ins>
+* Set a static local IP for your Raspberry PI: <ins>**it's important that it doesn't change**</ins> because both the Sonoff and the sensors board will be setup later in order to find the MQTT broker at this fixed IP address
+    > **Warning** the **default IP address that I used in the configuration** of the services that are composing the RMM system is **192.168.1.170**: if it's available in your local network, I really suggest to use this address for your Raspberry PI. In this case you will not need to change anything to make the whole system work perfectly.<br>
+    If you set a different from 192.168.1.170, have a look at [this readme](./miner-RMM/README.md) in order to make everything work correctly!
 * **Install the software requirements** for the RMM system:
   * Git (guide [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git))
   * Docker (guide [here](https://docs.docker.com/get-docker/))
@@ -126,8 +128,11 @@ Once you got these specifics, you have to setup the correct power supply infrast
     
 * The **ON/OFF button** on the top-left corner of the dashboard will be able to power on/off your miner (<ins>**once correctly setup with your Sonoff!**</ins>)
   * In order to setup this button to work properly with the Sonoff, you can find more helpful info [here](./miner-RMM/README.md)
-* All the other panels are already setup in order to show measurements data that will come from the Sonoff meter, environental sensors, and miner itself! 
-  
+* All the **other panels are already setup** in order to show measurements data that will come from the Sonoff power meter, environental sensors, and miner itself! 
+> **Warning**<br>
+> **In case you chose to set 192.168.1.170** as static local IP address for your Raspberry, everything will be working. In other cases, as said before, go to [this readme](./miner-RMM/README.md) to learn how to fix the configuration of some services. 
+
+
 ### 2. Sonoff setup
  
 <img align="right" width="25%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/setup/serial-usb.JPG"> 
