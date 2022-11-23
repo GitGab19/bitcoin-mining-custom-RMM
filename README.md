@@ -109,15 +109,21 @@ Once you got these specifics, you have to setup the correct power supply infrast
     ```
 * Open a new browser window and go to **localhost:3000**
 * You should be redirected to the **Grafana welcome screen**, like this one:
+
     <img width="75%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/setup/grafana-welcome-screen.png">
+    
 * Enter **Grafana default credentials** (which are set in [.env](https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/miner-RMM/.env) file):
   * username: **admin**
   * password: **admin**
 * **Set the new password** in the following step
 * You'll be redirected to the **Grafana home screen**, where you'll find the already created dashboard, called "**ASIC**":
+
     <img width="75%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/setup/grafana-home-screen.png">
+    
 * **Open that dashboard**, you'll enter this screen:
+
     <img width="75%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/setup/asic-dashboard.png">
+    
 * The **ON/OFF button** on the top-left corner of the dashboard will be able to power on/off your miner (<ins>**once correctly setup with your Sonoff!**</ins>)
   * In order to setup this button to work properly with the Sonoff, you can find more helpful info [here](./miner-RMM/README.md)
 * All the other panels are already setup in order to show measurements data that will come from the Sonoff meter, environental sensors, and miner itself! 
