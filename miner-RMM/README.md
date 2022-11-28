@@ -59,8 +59,11 @@ In this case (as represented in the image above), the services used in my system
   This is the service which is in charge of retrieving data about Hashrate from the miner.
   The operation is managed from the relative script called ["miner_stats.py"](python_backend/miner_stats.py).
 
-  - in case of modifications about influxdb admin_token, IP address of Rasperry, etc 
+  - in case of modifications about influxdb admin_token, buckets names or organization name: 
     - you need to modify the relative lines into the above linked script
+  - this script will be automatically executes every minute, as you can see in the [cron](../miner-RMM/python_backend/mycron) file
+    - >**Warning**<br>
+      > You have to set the STATIC IP ADDRESS of **your miner** in this cron file, substituting it with the current 192.168.1.192!
 
 <br>
 In case you have doubts or any problems about the RMM system, feel free to open issue or DM me!

@@ -173,6 +173,13 @@ You can follow different guides present on Internet, such as https://www.hackste
 * Connect the ESP32 with your computer and verify from the Arduino IDE that everything is good, looking for the debug **messages sent to the serial monitor tool** of the IDE.
 * At this point your ESP32 is correctly setup and it's ready to be plugged into the experimental location (as near as possible to the miner) with a generic power adapter. 
 
+### 4. Boot up the system
+Once you have configured everything up, you just need to do a last thing:
+- set a STATIC local IP address to your miner
+- write this static IP in this [cron file](miner-RMM/python_backend/mycron), subtituting the current 192.168.1.192 
+
+Everything should be ready, restart everything and enjoy the RMM system!
+
 
 ## **Conclusion**
 I've decided to publish my personal project for anyone who is interested in experimenting with mining, especially for the ones who are willing to try starting with just a <ins>single miner</ins>. 
