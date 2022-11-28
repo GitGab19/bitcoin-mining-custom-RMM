@@ -26,16 +26,16 @@ In this case (as represented in the image above), the services used in my system
     - if you want to change it, <ins>**after creating a new one from influxdb admin panel**</ins>, you will need to change this line, inserting your fresh token there
     - the same operation is needed for the "**organizationName**" of influxdb
 -  influxdb <img align="top" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/influxdb.png">
-  - this is the **database** which will contain every measurements that will be written by the **telegraf agent**
-  - there are two default buckets:
-    - "<ins>myMeasurements</ins>": it will contain the **sensors measurements** (temperature, humidity, air quality) + **power measurements** of the Sonoff
+   - this is the **database** which will contain every measurements that will be written by the **telegraf agent**
+   - there are two default buckets:
+     - "<ins>myMeasurements</ins>": it will contain the **sensors measurements** (temperature, humidity, air quality) + **power measurements** of the Sonoff
       - "<ins>minerStats</ins>": it will contain the **hashrate measurements** that will be read from miner itself (through the automatic execution of [this script](python_backend/miner_stats.py)) 
     - it's pre-configured to be running on its standard port **8086**
-  - you can have a look at its structure going to http://localhost:8086 (**after that docker containers are running**, of course)
-    - the default username is: <ins>**admin**</ins>
-    - the default password is: <ins>**admin_password**</ins>
-    - if you want to change the credentials, you can do it changing lines 9-10 of [docker-compose.yml](docker-compose.yml) file
-  - if you want to change the default token that telegraf uses to write into db, once logged into influxdb admin panel, you can go to **"Load data" --> "API tokens"** and generate a new one (<ins>REMEMBER</ins> to **change the telegraf configuration** as explained above!)
+   - you can have a look at its structure going to http://localhost:8086 (**after that docker containers are running**, of course)
+     - the default username is: <ins>**admin**</ins>
+     - the default password is: <ins>**admin_password**</ins>
+     - if you want to change the credentials, you can do it changing lines 9-10 of [docker-compose.yml](docker-compose.yml) file
+    - if you want to change the default token that telegraf uses to write into db, once logged into influxdb admin panel, you can go to **"Load data" --> "API tokens"** and generate a new one (<ins>REMEMBER</ins> to **change the telegraf configuration** as explained above!)
 - grafana <img align="top" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/grafana.png">
   - this is the service which is in charge of **plotting all data** extracted from influxdb, and **it will be the main interface for the monitoring and management activity**
   - you can access it going to http://localhost:3000
