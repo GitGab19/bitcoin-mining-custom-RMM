@@ -14,7 +14,7 @@ As any other *docker-compose*, it contains the set of services that will be virt
 In this case (as represented in the image above), the services used in my system are:
 - mosquitto <img align="center" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/mosquitto.png">
   
-  This is the **MQTT broker**, which collects every MQTT messages that arrives from the sensor board (ESP32) and the Sonoff (power meter) in its local network
+  This is the **MQTT broker**, which collects every MQTT messages that arrives from the sensor board (ESP32) and the Sonoff (power meter) in its local network.
   - it's pre-configured (see the config file [here](mosquitto/mosquitto.conf)) to listen MQTT connections on standard port **1883**.
 - telegraf <img align="top" style="width:3%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/telegraf.svg">
   
