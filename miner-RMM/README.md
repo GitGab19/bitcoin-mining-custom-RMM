@@ -27,14 +27,26 @@ In this case (as represented in the image above), the services used in my system
     - the same operation is needed for the "**organizationName**" of influxdb
 -  influxdb <img align="top" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/influxdb.png">
   - this is the **database** which will contain every measurements that will be written by the **telegraf agent**
-    - there are two default buckets:
-      - "<ins>myMeasurements</ins>": it will contain the **sensors measurements** (temperature, humidity, air quality) + **power measurements** of the Sonoff
+  - there are two default buckets:
+    - "<ins>myMeasurements</ins>": it will contain the **sensors measurements** (temperature, humidity, air quality) + **power measurements** of the Sonoff
       - "<ins>minerStats</ins>": it will contain the **hashrate measurements** that will be read from miner itself (through the automatic execution of [this script](python_backend/miner_stats.py)) 
-  - it's pre-configured to be running on its standard port **8086**
+    - it's pre-configured to be running on its standard port **8086**
   - you can have a look at its structure going to http://localhost:8086 (**after that docker containers are running**, of course)
     - the default username is: <ins>**admin**</ins>
     - the default password is: <ins>**admin_password**</ins>
     - if you want to change the credentials, you can do it changing lines 9-10 of [docker-compose.yml](docker-compose.yml) file
   - if you want to change the default token that telegraf uses to write into db, once logged into influxdb admin panel, you can go to **"Load data" --> "API tokens"** and generate a new one (<ins>REMEMBER</ins> to **change the telegraf configuration** as explained above!)
 - grafana <img align="top" style="width:5%" src="https://github.com/GitGab19/bitcoin-mining-custom-RMM/blob/main/docs/images/logos/grafana.png">
+  - this is the service which is in charge of **plotting all data** extracted from influxdb, and **it will be the main interface for the monitoring and management activity**
+  - you can access it going to http://localhost:3000
+    - the default username is: **admin**
+    - the default password (*if it's the first time that you access Grafana and you didn't change the password*) is: **admin**
+  - if during the **setup guide** present [here](../README.md) **you set a IP address different from 192.168.1.170**
+    - you have to put your static IP chosen into **ON/OFF button** configuration:
+      - click onto ON/OFF title --> **"Edit"**
+      - expand the **"Server"** options on the right
+      - write the static **IP address of your Raspberry into "Server" field**
+  
+  <br>
+  If you didn't know Grafana before, you can start by reading its [documentation](https://grafana.com/docs/)!
 - miner-stats
